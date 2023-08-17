@@ -7,7 +7,7 @@
 <title></title>
 </head>
 <body>
-<a href="index.jsp" style="text-decoration: none; font-weight: bold">START PAGE</a>
+<a href="index.jsp" style="text-decoration: none; font-weight: bold">Стартова сторінка</a>
 
 </body>
 </html>

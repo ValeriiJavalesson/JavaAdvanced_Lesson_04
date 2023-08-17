@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>User's cabinet</title>
+<title>Кабінет користувача</title>
 </head>
 <body>
 <jsp:include page="header.jsp"></jsp:include>

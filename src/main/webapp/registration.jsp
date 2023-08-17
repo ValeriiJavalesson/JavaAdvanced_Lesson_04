@@ -4,23 +4,23 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Registration</title>
+<title>Реєстрація</title>
 </head>
 <body>
 <jsp:include page="header.jsp"></jsp:include>
-<h1>Registration page</h1>
+<h1>Сторінка реєстрації</h1>
 <p>
 <p>
 <p>
 <form action="registration" method="post">
 	
-		<label for="firstName">First Name :</label> <input name="firstName">
+		<label for="firstName">Ім’я :</label> <input name="firstName">
 			<br>
-		<label for="lastName">Last Name :</label> <input name="lastName">
+		<label for="lastName">Прізвище :</label> <input name="lastName">
 			<br>
 		<label for="email">Email :</label> <input name="email">
 			<br>	
-		<label for="password">Password : </label> <input name="password">
+		<label for="password">Пароль : </label> <input name="password">
 			<br>
 		<input name="accessLevel" type="radio" id="user" value="user" checked>
         <label for="user">Звичайний користувач</label>

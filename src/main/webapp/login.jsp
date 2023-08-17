@@ -4,19 +4,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Login</title>
+<title>Вхід</title>
 </head>
 <body>
 
 	<jsp:include page="header.jsp"></jsp:include>
 	
-	<h1>Login page</h1>
+	<h1>Сторінка авторизації</h1>
 	<p>
 	<p>
 	<p>
 	<form action="login" method="post">
-		<label for="login">Login :</label> <input name="login"> <br>
-		<label for="password">Password : </label> <input name="password">
+		<label for="login">Логін :</label> <input name="login"> <br>
+		<label for="password">Пароль : </label> <input name="password">
 		<br> <input type="submit" value="Ввійти">
 	</form>
 	
