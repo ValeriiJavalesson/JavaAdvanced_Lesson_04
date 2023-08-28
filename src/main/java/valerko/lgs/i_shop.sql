@@ -8,7 +8,7 @@ create table user(
     lastName varchar(120) not null,
     email varchar(120) not null unique,
     password varchar(120) not null,
-    role varchar(50) not null,
+    accessLevel varchar(50) not null,
 		created_at datetime default now(),
     is_deleted boolean default false
 );
