@@ -5,7 +5,7 @@
 * [lesson-03](https://github.com/ValeriiJavalesson/JavaAdvanced_Lessons/tree/lesson_03)  Log4j
 * [lesson-04](https://github.com/ValeriiJavalesson/JavaAdvanced_Lessons/tree/lesson_04)  Servlets, JSP, Tomcat
 * [lesson-05](https://github.com/ValeriiJavalesson/JavaAdvanced_Lessons/tree/lesson_05)  Project implementation (DB design, DAO, Services)
-* [lesson-06]()  Project implementation (Logger, Registration, Login)
+* [lesson-06](https://github.com/ValeriiJavalesson/JavaAdvanced_Lessons/tree/lesson_06)  Project implementation (Logger, Registration, Login)
 * [lesson-07]()  Project implementation (Bootstrap, Ajax)
 * [lesson-08]()  Project implementation (Cabinet, Logout)
 * [lesson-09]()  Project implementation (Products, Bucket)
