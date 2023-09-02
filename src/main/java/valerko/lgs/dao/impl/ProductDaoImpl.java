@@ -1,5 +1,6 @@
 package valerko.lgs.dao.impl;
 
+import org.apache.log4j.Logger;
 import valerko.lgs.dao.ProductDao;
 import valerko.lgs.domain.Product;
 import valerko.lgs.utils.ConnectionUtil;
@@ -19,7 +20,7 @@ public class ProductDaoImpl implements ProductDao {
     private static final String READ_BY_ID = "select * from product where id=?";
     private static final String UPDATE_BY_ID = "update product set title=?, description=?, price = ? where id = ?";
     private static final String DELETE_BY_ID = "update product set is_deleted=true where id=?";
-
+    private static Logger LOGGER = Logger.getLogger(UserDaoImpl.class);
     private Connection connection;
     private PreparedStatement preparedStatement;
 
@@ -36,7 +37,7 @@ public class ProductDaoImpl implements ProductDao {
             preparedStatement.setDouble(3, product.getPrice());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.error(e);
         }
     }
 
@@ -50,7 +51,7 @@ public class ProductDaoImpl implements ProductDao {
             result.next();
             product = Product.map(result);
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.error(e);
         }
         return product;
     }
@@ -64,7 +65,7 @@ public class ProductDaoImpl implements ProductDao {
             preparedStatement.setDouble(3, product.getPrice());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.error(e);
         }
     }
 
@@ -75,7 +76,7 @@ public class ProductDaoImpl implements ProductDao {
             preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.error(e);
         }
     }
 
@@ -89,7 +90,7 @@ public class ProductDaoImpl implements ProductDao {
                 listOProducts.add(Product.map(result));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.error(e);
         }
         return listOProducts;
     }

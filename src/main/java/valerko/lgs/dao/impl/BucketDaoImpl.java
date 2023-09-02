@@ -1,5 +1,6 @@
 package valerko.lgs.dao.impl;
 
+import org.apache.log4j.Logger;
 import valerko.lgs.dao.BucketDao;
 import valerko.lgs.domain.Bucket;
 import valerko.lgs.utils.ConnectionUtil;
@@ -15,7 +16,7 @@ public class BucketDaoImpl implements BucketDao {
     private static final String READ_BY_ID = "select * from bucket where id=?";
     private static final String UPDATE_BY_ID = "update bucket set userId=?, productId=?, purchaseDate = ? where id = ?";
     private static final String DELETE_BY_ID = "update bucket set is_deleted=true where id=?";
-
+    private static Logger LOGGER = Logger.getLogger(UserDaoImpl.class);
     private Connection connection;
     private PreparedStatement preparedStatement;
 
@@ -31,7 +32,7 @@ public class BucketDaoImpl implements BucketDao {
             preparedStatement.setDate(3, new Date(bucket.getPurchaseDate().getTime()));
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.error(e);
         }
     }
 
@@ -45,7 +46,7 @@ public class BucketDaoImpl implements BucketDao {
             result.next();
             bucket = Bucket.map(result);
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.error(e);
         }
         return bucket;
     }
@@ -59,7 +60,7 @@ public class BucketDaoImpl implements BucketDao {
             preparedStatement.setDate(3, new Date(bucket.getPurchaseDate().getTime()));
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.error(e);
         }
     }
 
@@ -70,7 +71,7 @@ public class BucketDaoImpl implements BucketDao {
             preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.error(e);
         }
     }
 
@@ -84,7 +85,7 @@ public class BucketDaoImpl implements BucketDao {
                 listOfBuckets.add(Bucket.map(result));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.error(e);
         }
         return listOfBuckets;
     }

@@ -1,5 +1,6 @@
 package valerko.lgs.dao.impl;
 
+import org.apache.log4j.Logger;
 import valerko.lgs.dao.UserDao;
 import valerko.lgs.domain.User;
 import valerko.lgs.utils.ConnectionUtil;
@@ -20,7 +21,7 @@ public class UserDaoImpl implements UserDao {
     private static final String UPDATE_BY_ID = "update user set firstName=?, lastName = ?, email = ?, password = ?, accessLevel = ? where id = ?";
     private static final String DELETE_BY_ID = "update user set is_deleted=true where id=?";
     private static final String DELETE_BY_EMAIL = "update user set is_deleted=true where email=?";
-
+    private static Logger LOGGER = Logger.getLogger(UserDaoImpl.class);
     private Connection connection;
     private PreparedStatement preparedStatement;
 
@@ -39,7 +40,7 @@ public class UserDaoImpl implements UserDao {
             preparedStatement.setString(5, user.getAccessLevel());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.error(e);
         }
 
     }
@@ -54,7 +55,7 @@ public class UserDaoImpl implements UserDao {
             result.next();
             user = User.map(result);
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.error(e);
         }
         return user;
     }
@@ -67,7 +68,7 @@ public class UserDaoImpl implements UserDao {
             result.next();
             user = User.map(result);
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.error(e);
         }
         return user;
     }
@@ -84,7 +85,7 @@ public class UserDaoImpl implements UserDao {
             preparedStatement.setInt(6, user.getId());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.error(e);
         }
     }
 
@@ -95,7 +96,7 @@ public class UserDaoImpl implements UserDao {
             preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.error(e);
         }
     }
 
@@ -105,7 +106,7 @@ public class UserDaoImpl implements UserDao {
             preparedStatement.setString(1, email);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.error(e);
         }
     }
 
@@ -119,7 +120,7 @@ public class UserDaoImpl implements UserDao {
                 listOfUsers.add(User.map(result));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.error(e);
         }
         return listOfUsers;
     }
