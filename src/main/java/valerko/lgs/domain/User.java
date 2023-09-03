@@ -10,16 +10,16 @@ public class User {
 	private String lastName;
 	private String email;
 	private String password;
-	private String accessLevel;
+	private AccessLevel accessLevel;
 	
-	public User(String firstName, String lastName, String email, String password, String accessLevel) {
+	public User(String firstName, String lastName, String email, String password, AccessLevel accessLevel) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.password = password;
 		this.accessLevel = accessLevel;
 	}
-	public User(int id, String firstName, String lastName, String email, String password, String accessLevel) {
+	public User(int id, String firstName, String lastName, String email, String password, AccessLevel accessLevel) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -34,7 +34,7 @@ public class User {
         String lastName = result.getString("lastName");
         String email = result.getString("email");
         String password = result.getString("password");
-        String accessLevel = result.getString("accessLevel");
+		AccessLevel accessLevel = AccessLevel.valueOf(result.getString("accessLevel").toUpperCase());
         return new User(id, firstName, lastName, email, password, accessLevel);
     }
     
@@ -58,7 +58,7 @@ public class User {
 		return password;
 	}
 	
-	public String getAccessLevel() {
+	public AccessLevel getAccessLevel() {
 		return accessLevel;
 	}
 	@Override

@@ -4,14 +4,22 @@ import valerko.lgs.dao.ProductDao;
 import valerko.lgs.dao.impl.ProductDaoImpl;
 import valerko.lgs.domain.Product;
 import valerko.lgs.service.ProductService;
+import valerko.lgs.service.UserService;
 
 import java.util.List;
 
 public class ProductServiceImpl implements ProductService {
+    private static ProductServiceImpl productServiceImpl;
     private ProductDao productDao;
 
-    public ProductServiceImpl() {
+    private ProductServiceImpl() {
         productDao = new ProductDaoImpl();
+    }
+    public static ProductService getProductService(){
+        if(productServiceImpl == null){
+            productServiceImpl = new ProductServiceImpl();
+        }
+        return productServiceImpl;
     }
 
     @Override

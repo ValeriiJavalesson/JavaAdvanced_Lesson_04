@@ -8,10 +8,17 @@ import valerko.lgs.service.UserService;
 import java.util.List;
 
 public class UserServiceImpl implements UserService {
+    private static UserServiceImpl userServiceImpl;
     private UserDao userDao;
 
-    public UserServiceImpl() {
+    private UserServiceImpl() {
         userDao = new UserDaoImpl();
+    }
+    public static UserService getUserService(){
+        if(userServiceImpl == null){
+            userServiceImpl = new UserServiceImpl();
+        }
+        return userServiceImpl;
     }
 
     @Override
@@ -22,6 +29,9 @@ public class UserServiceImpl implements UserService {
     @Override
     public User read(int id) {
         return userDao.read(id);
+    }
+    public User read(String email) {
+        return userDao.read(email);
     }
 
     @Override

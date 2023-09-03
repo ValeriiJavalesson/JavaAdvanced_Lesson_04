@@ -1,5 +1,7 @@
 package valerko.lgs.utils;
 
+import org.apache.log4j.xml.DOMConfigurator;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -8,12 +10,12 @@ public class ConnectionUtil {
     private static final String USER_NAME = "Valerii";
     private static final String USER_PASSWORD = null;
     private static final String URL = "jdbc:mysql://localhost:3306/magazinesShop";
-
     private static ConnectionUtil instance;
     private Connection connection;
 
     private ConnectionUtil() {
         try {
+            DOMConfigurator.configure("loggerConfig.xml");
             Class.forName("com.mysql.cj.jdbc.Driver");
             this.connection = DriverManager.getConnection(URL, USER_NAME, USER_PASSWORD);
         } catch (ClassNotFoundException e) {
@@ -28,6 +30,7 @@ public class ConnectionUtil {
     }
 
     public static ConnectionUtil getInstance() {
+
         if (instance == null) {
             instance = new ConnectionUtil();
         } else

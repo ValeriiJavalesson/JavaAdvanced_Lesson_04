@@ -37,7 +37,7 @@ public class UserDaoImpl implements UserDao {
             preparedStatement.setString(2, user.getFirstName());
             preparedStatement.setString(3, user.getLastName());
             preparedStatement.setString(4, user.getPassword());
-            preparedStatement.setString(5, user.getAccessLevel());
+            preparedStatement.setString(5, user.getAccessLevel().name());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             LOGGER.error(e);
@@ -81,7 +81,7 @@ public class UserDaoImpl implements UserDao {
             preparedStatement.setString(2, user.getLastName());
             preparedStatement.setString(3, user.getEmail());
             preparedStatement.setString(4, user.getPassword());
-            preparedStatement.setString(5, user.getAccessLevel());
+            preparedStatement.setString(5, user.getAccessLevel().name());
             preparedStatement.setInt(6, user.getId());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {

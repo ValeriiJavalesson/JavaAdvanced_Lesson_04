@@ -4,14 +4,22 @@ import valerko.lgs.dao.BucketDao;
 import valerko.lgs.dao.impl.BucketDaoImpl;
 import valerko.lgs.domain.Bucket;
 import valerko.lgs.service.BucketService;
+import valerko.lgs.service.ProductService;
 
 import java.util.List;
 
 public class BucketServiceImpl implements BucketService {
+    private static BucketServiceImpl bucketServiceImpl;
     private BucketDao bucketDao;
 
-    public BucketServiceImpl() {
+    private BucketServiceImpl() {
         bucketDao = new BucketDaoImpl();
+    }
+    public static BucketService getBucketService(){
+        if(bucketServiceImpl == null){
+            bucketServiceImpl = new BucketServiceImpl();
+        }
+        return bucketServiceImpl;
     }
 
     @Override

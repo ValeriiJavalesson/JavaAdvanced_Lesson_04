@@ -25,7 +25,7 @@
 		<input name="accessLevel" type="radio" id="user" value="user" checked>
         <label for="user">Звичайний користувач</label>
         	<br>
-        <input name="accessLevel" type="radio" id="admin" value="admin">
+        <input name="accessLevel" type="radio" id="admin" value="administrator">
         <label for="admin">Адміністратор</label>
         	<br>
 		<input type="submit" value="Зареєстуватися">
