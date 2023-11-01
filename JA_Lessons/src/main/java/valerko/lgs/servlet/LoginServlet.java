@@ -7,36 +7,34 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+
 import valerko.lgs.domain.User;
+import valerko.lgs.dto.UserLogin;
 import valerko.lgs.service.UserService;
 import valerko.lgs.service.impl.UserServiceImpl;
 
 @WebServlet(name = "login", urlPatterns = { "/login" })
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		request.getRequestDispatcher("login.jsp").forward(request, response);
-	}
+	private UserService userService = UserServiceImpl.getUserService();
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String login = request.getParameter("login");
+		
+		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 
-		UserService userService = UserServiceImpl.getUserService();
-		User user = userService.read(login);
+		User user = userService.read(email);
 
-		if (user == null) {
-			request.getRequestDispatcher("login.jsp").forward(request, response);
-		}
-		if (user.getPassword().equals(password)) {
-			request.setAttribute("userEmail", login);
-			request.setAttribute("userAction", "авторизувалися");
-			request.getRequestDispatcher("cabinet.jsp").forward(request, response);
-		} else {
-			request.getRequestDispatcher("login.jsp").forward(request, response);
+		if (user != null && user.getPassword().equals(password)) {
+			UserLogin userLogin = new UserLogin();
+			userLogin.destinationUrl = "cabinet.jsp";
+			userLogin.userEmail = user.getEmail();
+			String json = new Gson().toJson(userLogin);
+			response.setContentType("application/json");
+			response.setCharacterEncoding("UTF-8");
+			response.getWriter().write(json);
 		}
 	}
 }

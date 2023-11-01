@@ -1,1 +1,1 @@
-<a href="index.jsp">Home page</a>
+<div class="logo-id-header text-bg-dark p-3 fs-3 mb-4">I_SHOP</div>

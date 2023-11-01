@@ -16,10 +16,10 @@ import valerko.lgs.dao.UserDao;
 public class UserDaoImpl implements UserDao {
 
 	private static final String READ_ALL = "select * from user where is_deleted=false";
-	private static final String CREATE = "insert into user(`firstName`, `lastName`, `email`, `password`, `role`) values (?,?,?,?,?)";
+	private static final String CREATE = "insert into user(`firstName`, `lastName`, `email`, `password`) values (?,?,?,?)";
 	private static final String READ_BY_ID = "select * from user where id =?";
 	private static final String READ_BY_EMAIL = "select * from user where email =?";
-	private static final String UPDATE_BY_ID = "update user set firstName=?, lastName = ?, email = ?, password = ?, role = ? where id = ?";
+	private static final String UPDATE_BY_ID = "update user set firstName=?, lastName = ?, email = ?, password = ? where id = ?";
 	private static final String DELETE_BY_ID = "update user set is_deleted=true where id=?";
 	private static final String DELETE_BY_EMAIL = "update user set is_deleted=true where email=?";
 
@@ -40,7 +40,6 @@ public class UserDaoImpl implements UserDao {
 			preparedStatement.setString(2, user.getLastName());
 			preparedStatement.setString(3, user.getEmail());
 			preparedStatement.setString(4, user.getPassword());
-			preparedStatement.setString(5, user.getRole().name());
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
 			LOGGER.error(e);
