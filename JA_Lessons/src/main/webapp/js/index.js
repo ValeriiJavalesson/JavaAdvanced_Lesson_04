@@ -19,11 +19,13 @@ $("button.login")
 				};
 
 				$.post("login", userLogin, function(data) {
-					console.log(data);
-					if (data == 'Success') {
-						/*$("form")[0].reset();
-						console.log(data);*/
+					var customUrl = '';
+					var urlContent = window.location.href.split('/');
+					for(var i = 0; i< urlContent.length-1; i++){
+						customUrl += urlContent[i]+'/';
 					}
+					customUrl += data.destinationUrl;
+						window.location = customUrl;					
 				});
 			}
 		});
