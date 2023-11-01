@@ -29,3 +29,9 @@ $("button.login")
 				});
 			}
 		});
+$("form.login-form .alert button")
+	.click(
+		function() {
+			$("form.login-form .alert").addClass("d-none");
+					}
+			);

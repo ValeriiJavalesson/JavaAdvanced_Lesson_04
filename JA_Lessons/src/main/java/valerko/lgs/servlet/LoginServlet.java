@@ -28,6 +28,7 @@ public class LoginServlet extends HttpServlet {
 		User user = userService.read(email);
 
 		if (user != null && user.getPassword().equals(password)) {
+			
 			UserLogin userLogin = new UserLogin();
 			userLogin.destinationUrl = "cabinet.jsp";
 			userLogin.userEmail = user.getEmail();
