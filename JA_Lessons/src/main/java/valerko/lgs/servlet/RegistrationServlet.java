@@ -7,8 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import valerko.lgs.dao.UserRole;
+import com.google.gson.Gson;
+
 import valerko.lgs.domain.User;
+import valerko.lgs.dto.UserLogin;
 import valerko.lgs.service.UserService;
 import valerko.lgs.service.impl.UserServiceImpl;
 
@@ -19,21 +21,29 @@ public class RegistrationServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+
 		String firstName = request.getParameter("firstName");
 		String lastName = request.getParameter("lastName");
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		
 
-		if (!firstName.isEmpty() && !lastName.isEmpty() && !email.isEmpty() && !password.isEmpty()) {
-				userService.create(new User(firstName, lastName, email, password));
+		User user = userService.read(email);
+		
+		if (user == null ) {
+			if (!firstName.isEmpty() && !lastName.isEmpty() && !email.isEmpty() && !password.isEmpty()) {
+				user = new User(firstName, lastName, email, password);
+				userService.create(user);
 				request.setAttribute("userEmail", email);
 				request.setAttribute("userName", firstName);
-				request.setAttribute("userAction", "зареєструвалися");				
+
+				UserLogin userLogin = new UserLogin();
+				userLogin.destinationUrl = "cabinet.jsp";
+				userLogin.userEmail = user.getEmail();
+				String json = new Gson().toJson(userLogin);
+				response.setContentType("application/json");
+				response.setCharacterEncoding("UTF-8");
+				response.getWriter().write(json);
 			}
-		response.setContentType("text/plain");
-		response.setCharacterEncoding("UTF-8");
-		response.getWriter().write("Success");
+		}
 	}
 }

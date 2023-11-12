@@ -23,6 +23,84 @@
 			<h2>Вітаємо у вашому кабінеті!</h2>
 		</div>
 	</div>
+	<div class="container main-content">
+		<div class="d-flex flex-wrap justify-content-evenly">
+			<div class="m-3">
+				<div class="card" style="width: 18rem;">
+					<img src="..." class="card-img-top" alt="...">
+					<div class="card-body">
+						<h5 class="card-title">Card title</h5>
+						<h6 class="card-subtitle mb-2 text-body-secondary">Card
+							subtitle</h6>
+						<p class="card-text">Some quick example text to build on the
+							card title and make up the bulk of the card's content.</p>
+						<a href="#" class="card-link">Card link</a> <a href="#"
+							class="card-link">Another link</a>
+					</div>
+				</div>
+			</div>	
+			<div class="m-3">
+				<div class="card" style="width: 18rem;">
+					<img src="..." class="card-img-top" alt="...">
+					<div class="card-body">
+						<h5 class="card-title">Card title</h5>
+						<h6 class="card-subtitle mb-2 text-body-secondary">Card
+							subtitle</h6>
+						<p class="card-text">Some quick example text to build on the
+							card title and make up the bulk of the card's content.</p>
+						<a href="#" class="card-link">Card link</a> <a href="#"
+							class="card-link">Another link</a>
+					</div>
+				</div>
+			</div>		
+			<div class="m-3">
+				<div class="card" style="width: 18rem;">
+					<img src="..." class="card-img-top" alt="...">
+					<div class="card-body">
+						<h5 class="card-title">Card title</h5>
+						<h6 class="card-subtitle mb-2 text-body-secondary">Card
+							subtitle</h6>
+						<p class="card-text">Some quick example text to build on the
+							card title and make up the bulk of the card's content.</p>
+						<a href="#" class="card-link">Card link</a> <a href="#"
+							class="card-link">Another link</a>
+					</div>
+				</div>
+			</div>		
+			<div class="m-3">
+				<div class="card" style="width: 18rem;">
+					<img src="..." class="card-img-top" alt="...">
+					<div class="card-body">
+						<h5 class="card-title">Card title</h5>
+						<h6 class="card-subtitle mb-2 text-body-secondary">Card
+							subtitle</h6>
+						<p class="card-text">Some quick example text to build on the
+							card title and make up the bulk of the card's content.</p>
+						<a href="#" class="card-link">Card link</a> <a href="#"
+							class="card-link">Another link</a>
+					</div>
+				</div>
+			</div>		
+			<div class="m-3">
+				<div class="card" style="width: 18rem;">
+					<img src="..." class="card-img-top" alt="...">
+					<div class="card-body">
+						<h5 class="card-title">Card title</h5>
+						<h6 class="card-subtitle mb-2 text-body-secondary">Card
+							subtitle</h6>
+						<p class="card-text">Some quick example text to build on the
+							card title and make up the bulk of the card's content.</p>
+						<a href="#" class="card-link">Card link</a> <a href="#"
+							class="card-link">Another link</a>
+					</div>
+				</div>
+			</div>				
+		</div>
+	</div>
+
+
+
+
 	<jsp:include page="footer.jsp"></jsp:include>
 
 	<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>

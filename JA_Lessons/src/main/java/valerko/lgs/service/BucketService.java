@@ -1,5 +1,8 @@
 package valerko.lgs.service;
 
-public class BucketService {
+import valerko.lgs.domain.Bucket;
+import valerko.lgs.shared.AbstractCRUD;
+
+public interface BucketService extends AbstractCRUD<Bucket>{
 
 }

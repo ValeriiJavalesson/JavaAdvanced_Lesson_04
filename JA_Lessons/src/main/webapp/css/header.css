@@ -1,6 +1,36 @@
 @import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@1,100&display=swap');
 
+header {
+	height: 47px;
+}
+
 .logo-id-header{
     font-family: 'Exo 2', sans-serif;
-    font-weight: 700;
+    font-weight: 900;
 }
+header .nav-link{
+    transition-property: all;
+	transition-duration: 255ms;
+}
+header .nav-link:hover{
+	box-shadow: var(--bs-box-shadow)!important;
+}
+.offcanvas{
+	--bs-offcanvas-width: 300px;
+}
+.dropdown .dropdown-menu{
+	right: 0 !important;
+	left: auto !important;
+	--bs-dropdown-spacer: 10px;
+}
+@media (max-width: 991.98px) {
+	header {
+	height: auto;
+	}
+	.dropdown .dropdown-menu{
+		right: auto !important;
+		left: auto !important;
+	}
+}
+
+

@@ -27,8 +27,8 @@
 					<div class="card shadow-lg">
 						<div class="card-body p-5">
 							<h1 class="fs-4 card-title fw-bold mb-4">Вхід</h1>
-							<form method="POST" class="needs-validation login-form"
-								novalidate="" autocomplete="off">
+							<form class="needs-validation login-form"
+								novalidate="">
 								<div class="mb-3">
 									<label class="mb-2 text-muted" for="email">E-Mail</label> <input
 										id="email" type="email" class="form-control email"

@@ -9,8 +9,8 @@ $("button.register")
 				.val();
 
 			if (firstName == '' || lastName == '' || email == ''
-				|| password == '' || cpassword == '') {	
-				$("form.register-form .alert").removeClass("d-none");			
+				|| password == '' || cpassword == '') {
+				$("form.register-form .alert").removeClass("d-none");
 				$("form.register-form .alert span").text("Заповніть всі поля для реєстрації!");
 			} else if ((password.length) < 8) {
 				$("form.register-form .alert").removeClass("d-none");
@@ -20,7 +20,7 @@ $("button.register")
 				$("form.register-form .alert span").text("Паролі не співпадають!");
 			} else {
 				$("form.register-form .alert").addClass("d-none");
-				
+
 				var userRegistration = {
 					firstName: firstName,
 					lastName: lastName,
@@ -28,27 +28,30 @@ $("button.register")
 					password: password
 				};
 
-				$.post("registration", userRegistration,
-					function(data) {
-						if (data == 'Success') {
-							$("form")[0].reset();							
-							showAlertAfterRegistration();
-						}
-					});
+				$.post("registration", userRegistration, function(data) {
+					var customUrl = '';
+					var urlContent = window.location.href.split('/');
+					debugger
+					for (var i = 0; i < urlContent.length - 1; i++) {
+						customUrl += urlContent[i] + '/';
+					}
+					customUrl += data.destinationUrl;
+					window.location = customUrl;
+				});
 			}
 		});
 $("form.register-form .alert button")
 	.click(
 		function() {
 			$("form.register-form .alert").addClass("d-none");
-					}
-			);
+		}
+	);
 $("div.alert.alert-success button")
 	.click(
 		function() {
 			$("div.alert.alert-success").addClass("d-none");
-					}
-			);			
+		}
+	);
 function showAlertAfterRegistration() {
 	$('div.alert.alert-success').removeClass("d-none");
 }			

@@ -1,5 +1,8 @@
 package valerko.lgs.service;
 
-public class ProductService {
+import valerko.lgs.domain.Product;
+import valerko.lgs.shared.AbstractCRUD;
+
+public interface ProductService extends AbstractCRUD<Product>{
 
 }
