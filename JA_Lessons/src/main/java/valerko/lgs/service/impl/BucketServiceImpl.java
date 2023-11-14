@@ -48,4 +48,9 @@ public class BucketServiceImpl implements BucketService {
 		return bucketDao.readAll();
 	}
 
+	@Override
+	public List<Bucket> readByUserId(Integer id) {
+		return bucketDao.readByUserId(id);
+	}
+
 }

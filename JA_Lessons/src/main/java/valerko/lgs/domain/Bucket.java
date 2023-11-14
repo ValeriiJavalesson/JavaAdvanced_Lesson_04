@@ -1,9 +1,9 @@
 package valerko.lgs.domain;
 
-import java.sql.Date;
+//import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-//import java.util.Date;
+import java.util.Date;
 import java.util.Objects;
 
 public class Bucket {
@@ -19,10 +19,10 @@ public class Bucket {
 		this.purchaseDate = purchaseDate;
 	}
 
-	public Bucket(Integer userId, Integer productId, Date purchaseDate) {
+	public Bucket(Integer userId, Integer productId, Date date) {
 		this.userId = userId;
 		this.productId = productId;
-		this.purchaseDate = purchaseDate;
+		this.purchaseDate = date;
 	}
 
 	public static Bucket map(ResultSet result) throws SQLException {

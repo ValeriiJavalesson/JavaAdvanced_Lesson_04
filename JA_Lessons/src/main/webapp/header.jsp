@@ -23,8 +23,8 @@
 					aria-label="Search">
 			</form>
 
-			<div class="pe-3 order-1 order-lg-3">
-				<a href="${pageContext.request.contextPath}/bucket.jsp" class="d-block link-dark text-decoration-none"
+			<div class="pe-3 order-1 order-lg-3 position-relative">
+				<a href="${pageContext.request.contextPath}/bucket.jsp" class="d-block link-dark text-decoration-none shopping-cart-icon"
 					aria-expanded="false"> <img
 					src="style/images/shopping-cart-icon.svg" alt="Cart" width="25"
 					height="25">

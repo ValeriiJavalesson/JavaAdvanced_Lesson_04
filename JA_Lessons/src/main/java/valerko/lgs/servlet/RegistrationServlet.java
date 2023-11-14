@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 
@@ -33,8 +34,9 @@ public class RegistrationServlet extends HttpServlet {
 			if (!firstName.isEmpty() && !lastName.isEmpty() && !email.isEmpty() && !password.isEmpty()) {
 				user = new User(firstName, lastName, email, password);
 				userService.create(user);
-				request.setAttribute("userEmail", email);
-				request.setAttribute("userName", firstName);
+				
+				HttpSession session = request.getSession(true);
+				session.setAttribute("user_id", user.getId());
 
 				UserLogin userLogin = new UserLogin();
 				userLogin.destinationUrl = "cabinet.jsp";

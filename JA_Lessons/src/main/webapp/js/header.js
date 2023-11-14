@@ -1,3 +1,7 @@
+$(document).ready(function () {
+   checkValueOfBuckets();
+});
+
 $(".logout-button")
 	.click(
 		function() {
@@ -13,3 +17,18 @@ $(".logout-button")
 				}
 			});
 		});	
+var buckets = 0;
+function checkValueOfBuckets() {
+	$.get("bucket", function(data) {
+		buckets = data.length;		
+	}).done(function() {
+		if (buckets == '0') {
+				$('.shopping-cart-icon::after').removeAttr('display');
+		}else{
+			$('.shopping-cart-icon::after').attr('display', 'block');
+			$("<style>.shopping-cart-icon::after { content: '" + buckets + "';}</style>").appendTo("head");
+		}
+		
+
+	});
+};		

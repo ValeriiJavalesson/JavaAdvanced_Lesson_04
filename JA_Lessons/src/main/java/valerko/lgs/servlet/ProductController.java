@@ -15,13 +15,19 @@ import valerko.lgs.service.impl.ProductServiceImpl;
 import valerko.lgs.service.impl.UserServiceImpl;
 
 @WebServlet(name = "product", urlPatterns = { "/product" })
-public class ProductComtroller extends HttpServlet {
+public class ProductController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	ProductService productService = ProductServiceImpl.getProductService();
 
 	// to get resource (product)
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		String productId = request.getParameter("id");
+		Product product = productService.read(Integer.parseInt(productId));
+		
+		request.setAttribute("product", product);
+		request.getRequestDispatcher("singleProduct.jsp").forward(request, response);
 	}
 
 	// to create resource (product)

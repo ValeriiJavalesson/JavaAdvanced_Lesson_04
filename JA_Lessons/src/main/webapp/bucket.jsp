@@ -23,6 +23,12 @@
 			<h2 class="fs-1 fw-bold">BUCKET</h2>
 		</div>
 	</div>
+	
+	<div class="container main-content">
+		<div class="d-flex flex-wrap justify-content-evenly" id="product-cards-in-cart">
+						
+		</div>
+	</div>
 
 
 
@@ -40,5 +46,6 @@
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="js/serverCalls.js"></script>
+	
 </body>
 </html>

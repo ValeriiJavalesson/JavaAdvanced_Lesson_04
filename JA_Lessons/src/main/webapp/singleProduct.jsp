@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>User's cabinet</title>
+<title>Insert title here</title>
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
 	integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
@@ -13,21 +13,42 @@
 	href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
 	integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
 	crossorigin="anonymous">
-<link rel="stylesheet" href="css/cabinet.css">
+<link rel="stylesheet" href="css/singleProduct.css">
 </head>
 <body>
 
-<jsp:include page="header.jsp"></jsp:include>
-	<div class="container-fluid main">
-		<div class="container row">
-			<h2>Вітаємо у вашому кабінеті!</h2>
+	<jsp:include page="header.jsp"></jsp:include>
+
+	<div class="container ">
+		<div class="single-product d-flex justify-content-center">
+			<div class="d-block products-image m-3">
+				<img src="..." class="fs-1" alt="Product's Image">
+			</div>
+			<div class="m-3">
+				<h5 class="card-title">${product.title}</h5>
+				<br>
+				<h6 class="card-subtitle mb-2 text-dark fs-5">${product.price}
+					$</h6>
+				<p class="card-text">${product.description}</p>
+				<br>
+				<br>
+				<br>
+				<a href="#" class="card-link btn btn-primary buy-product" type="button" product_id="${product.id}"
+				data-bs-toggle="modal" data-bs-target="#exampleModal">Купити</a>
+			</div>
 		</div>
 	</div>
-	<div class="container main-content">
-		<div class="d-flex flex-wrap justify-content-evenly" id="product-cards">
-						
-		</div>
-	</div>
+	<!-- Modal -->
+<div class="modal fade " id="exampleModal" >
+  <div class="modal-dialog modal-dialog-centered modal-sm">
+    <div class="modal-content">
+      <div class="modal-header border-0">
+        Додано до кошика!
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 
@@ -45,7 +66,7 @@
 		crossorigin="anonymous"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-		<script
-		src="js/cabinet.js"></script>
+	<script src="js/serverCalls.js"></script>
+
 </body>
 </html>

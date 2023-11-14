@@ -19,4 +19,31 @@ $("button.addProduct-button")
 					$("form.addProduct-form")[0].reset();
 				});
 			}
-		});	
+		});
+
+$("a.buy-product").click(function() {
+	var product_id = jQuery(this).attr("product_id");
+
+	$.post("bucket", { 'product_id': product_id },
+		function(data) {
+
+			if (data == 'Success') {
+				checkValueOfBuckets();
+			}
+		});
+});
+var buckets = 0;
+function checkValueOfBuckets() {
+	$.get("bucket", function(data) {
+		buckets = data.length;		
+	}).done(function() {
+		if (buckets == '0') {
+				$('.shopping-cart-icon::after').removeAttr('display');
+		}else{
+			$('.shopping-cart-icon::after').attr('display', 'block');
+			$("<style>.shopping-cart-icon::after { content: '" + buckets + "';}</style>").appendTo("head");
+		}
+		
+
+	});
+};		
