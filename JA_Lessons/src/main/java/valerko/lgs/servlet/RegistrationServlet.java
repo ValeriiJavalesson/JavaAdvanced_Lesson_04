@@ -35,17 +35,25 @@ public class RegistrationServlet extends HttpServlet {
 				user = new User(firstName, lastName, email, password);
 				userService.create(user);
 				
-				HttpSession session = request.getSession(true);
+				HttpSession session = request.getSession();
+				user = userService.read(email);
 				session.setAttribute("user_id", user.getId());
+				session.setAttribute("role", user.getRole().toString());
 
 				UserLogin userLogin = new UserLogin();
 				userLogin.destinationUrl = "cabinet.jsp";
 				userLogin.userEmail = user.getEmail();
+				
 				String json = new Gson().toJson(userLogin);
 				response.setContentType("application/json");
 				response.setCharacterEncoding("UTF-8");
 				response.getWriter().write(json);
 			}
+		}else {
+			String json = new Gson().toJson("");
+			response.setContentType("application/json");
+			response.setCharacterEncoding("UTF-8");
+			response.getWriter().write(json);
 		}
 	}
 }

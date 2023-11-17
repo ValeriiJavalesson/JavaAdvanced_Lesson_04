@@ -8,6 +8,8 @@ $("button.register")
 			var cpassword = $("form.register-form input.cpassword")
 				.val();
 
+
+
 			if (firstName == '' || lastName == '' || email == ''
 				|| password == '' || cpassword == '') {
 				$("form.register-form .alert").removeClass("d-none");
@@ -28,16 +30,32 @@ $("button.register")
 					password: password
 				};
 
-				$.post("registration", userRegistration, function(data) {
-					var customUrl = '';
-					var urlContent = window.location.href.split('/');
-					debugger
-					for (var i = 0; i < urlContent.length - 1; i++) {
-						customUrl += urlContent[i] + '/';
+				$.get("login", userRegistration, function(data) {
+					if (data == 'Success') {
+						$("form.register-form .alert").removeClass("d-none");
+						$("form.register-form .alert span").text("Електронна адреса вже зареєстрована, введіть іншу!");
+					} else {
+						$.post("registration", userRegistration, function(data) {
+
+							var customUrl = '';
+							var urlContent = window.location.href.split('/');
+							for (var i = 0; i < urlContent.length - 1; i++) {
+								customUrl += urlContent[i] + '/';
+							}
+							if (data == '') {
+								customUrl += 'index.jsp';
+								window.location = customUrl;
+							} else {
+								customUrl += data.destinationUrl;
+								window.location = customUrl;
+							}
+
+
+						});
 					}
-					customUrl += data.destinationUrl;
-					window.location = customUrl;
 				});
+
+
 			}
 		});
 $("form.register-form .alert button")

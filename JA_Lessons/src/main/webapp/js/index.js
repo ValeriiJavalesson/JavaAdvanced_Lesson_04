@@ -13,19 +13,23 @@ $("button.login")
 			} else {
 				$("form.login-form .alert").addClass("d-none");
 
-				var userLogin  = {
+				var userLogin = {
 					email: email,
 					password: password
 				};
 
 				$.post("login", userLogin, function(data) {
-					var customUrl = '';
-					var urlContent = window.location.href.split('/');
-					for(var i = 0; i< urlContent.length-1; i++){
-						customUrl += urlContent[i]+'/';
+					if (data == "noUser") {
+						location.reload();
+					} else {
+						var customUrl = '';
+						var urlContent = window.location.href.split('/');
+						for (var i = 0; i < urlContent.length - 1; i++) {
+							customUrl += urlContent[i] + '/';
+						}
+						customUrl += data.destinationUrl;
+						window.location = customUrl;
 					}
-					customUrl += data.destinationUrl;
-						window.location = customUrl;					
 				});
 			}
 		});
@@ -33,5 +37,5 @@ $("form.login-form .alert button")
 	.click(
 		function() {
 			$("form.login-form .alert").addClass("d-none");
-					}
-			);
+		}
+	);

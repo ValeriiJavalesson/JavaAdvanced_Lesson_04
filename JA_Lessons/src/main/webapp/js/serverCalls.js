@@ -1,22 +1,23 @@
 $("button.addProduct-button")
 	.click(
 		function() {
-			var name = $("form.addProduct-form input.productName").val();
+			var title = $("form.addProduct-form input.productName").val();
 			var description = $("form.addProduct-form input.productDescription").val();
 			var price = $("form.addProduct-form input.productPrice").val();
 
-			if (name != '' || description != '' || price != '') {
+			if (title != '' || description != '' || price != '') {
 
 				var newProduct = {
-					name: name,
+					title: title,
 					description: description,
 					price: price
 				};
 
-				$.post("product", newProduct, function(data) {
-					if (data == "Success")
+				$.post("product-create", newProduct, function(data) {
+					if (data == "Success") {
 						alert("Успішно");
-					$("form.addProduct-form")[0].reset();
+						$("form.addProduct-form")[0].reset();
+					}
 				});
 			}
 		});
@@ -35,15 +36,15 @@ $("a.buy-product").click(function() {
 var buckets = 0;
 function checkValueOfBuckets() {
 	$.get("bucket", function(data) {
-		buckets = data.length;		
+		buckets = data.length;
 	}).done(function() {
 		if (buckets == '0') {
-				$('.shopping-cart-icon::after').removeAttr('display');
-		}else{
+			$('.shopping-cart-icon::after').removeAttr('display');
+		} else {
 			$('.shopping-cart-icon::after').attr('display', 'block');
 			$("<style>.shopping-cart-icon::after { content: '" + buckets + "';}</style>").appendTo("head");
 		}
-		
+
 
 	});
 };		

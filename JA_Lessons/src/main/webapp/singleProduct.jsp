@@ -33,7 +33,7 @@
 				<br>
 				<br>
 				<br>
-				<a href="#" class="card-link btn btn-primary buy-product" type="button" product_id="${product.id}"
+				<a href="#" class="btn btn-primary buy-product" type="button" product_id="${product.id}"
 				data-bs-toggle="modal" data-bs-target="#exampleModal">Купити</a>
 			</div>
 		</div>

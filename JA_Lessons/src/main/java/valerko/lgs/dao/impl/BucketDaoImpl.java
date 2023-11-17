@@ -15,12 +15,12 @@ import valerko.lgs.domain.Bucket;
 import valerko.lgs.utils.ConnectionUtil;
 
 public class BucketDaoImpl implements BucketDao {
-	private static final String READ_ALL = "select * from bucket where is_deleted=false";
+	private static final String READ_ALL = "select * from bucket";
 	private static final String CREATE = "insert into bucket(`user_id`, `product_id`, `purchase_date`) values (?,?,?)";
 	private static final String READ_BY_ID = "select * from bucket where id=?";
 	private static final String READ_BY_USER_ID = "select * from bucket where user_id=?";
 	private static final String UPDATE_BY_ID = "update bucket set user_id=?, product_id=?, purchase_date = ? where id = ?";
-	private static final String DELETE_BY_ID = "update bucket set is_deleted=true where id=?";
+	private static final String DELETE_BY_ID = "delete from bucket where id=?";
 
 	private Connection connection;
 	private PreparedStatement preparedStatement;

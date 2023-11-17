@@ -6,16 +6,14 @@
 
 		<div
 			class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start navbar p-0">
-			<a class="btn" data-bs-toggle="offcanvas" href="#offcanvasExample"
+			<a class="btn admin-menu" data-bs-toggle="offcanvas" href="#offcanvasExample"
 				role="button" aria-controls="offcanvasExample"><span
 				class="navbar-toggler-icon fs-6 fs-lg-5"></span> </a>
 			<div class="logo-id-header col-3 col-sm-2 text-bg-white fs-5 fs-lg-4 order-0">I_SHOP</div>
 			<ul
 				class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0 order-3 order-lg-1">
-				<li><a href="#" class="nav-link px-2 link-dark rounded">Overview</a></li>
-				<li><a href="#" class="nav-link px-2 link-dark rounded">Inventory</a></li>
-				<li><a href="#" class="nav-link px-2 link-dark rounded">Customers</a></li>
-				<li><a href="#" class="nav-link px-2 link-dark rounded">Products</a></li>
+				<li><a href="${pageContext.request.contextPath}/cabinet.jsp" class="nav-link px-2 link-dark rounded">Products</a></li>
+
 			</ul>
 
 			<form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3 fs-8 p-1 order-4 order-lg-2">
@@ -23,14 +21,14 @@
 					aria-label="Search">
 			</form>
 
-			<div class="pe-3 order-1 order-lg-3 position-relative">
+			<div class="pe-3 order-1 order-lg-3 position-relative cart-wrapper">
 				<a href="${pageContext.request.contextPath}/bucket.jsp" class="d-block link-dark text-decoration-none shopping-cart-icon"
 					aria-expanded="false"> <img
 					src="style/images/shopping-cart-icon.svg" alt="Cart" width="25"
 					height="25">
 				</a>
 			</div>
-			<div class="dropdown text-end d-block order-2 order-lg-4">
+			<div class="dropdown text-end order-2 order-lg-4 user-dropdown-menu">
 				<a href="#"
 					class="d-block link-dark text-decoration-none dropdown-toggle"
 					id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">

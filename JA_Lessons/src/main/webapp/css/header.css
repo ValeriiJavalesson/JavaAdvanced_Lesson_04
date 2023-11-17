@@ -4,6 +4,13 @@ header {
 	height: 47px;
 }
 
+a.admin-menu{
+	display: none;
+}
+div.cart-wrapper, div.user-dropdown-menu{
+	display: none;
+}
+
 .logo-id-header{
     font-family: 'Exo 2', sans-serif;
     font-weight: 900;
