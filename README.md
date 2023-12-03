@@ -11,7 +11,8 @@
 * [lesson-09](https://github.com/ValeriiJavalesson/JavaAdvanced_Lessons/tree/lesson_09)  Project implementation (Products, Bucket)
 * [lesson-10](https://github.com/ValeriiJavalesson/JavaAdvanced_Lessons/tree/lesson_10)  Project implementation (Bucket, Filters)
 * [lesson-11](https://github.com/ValeriiJavalesson/JavaAdvanced_Lessons/tree/lesson_11)  Git - advanced features
-* [lesson-12](https://github.com/ValeriiJavalesson/JavaAdvanced_Lessons/tree/lesson_12)  Maven, Gradle
+* [lesson-12](https://github.com/ValeriiJavalesson/JavaAdvanced_Lessons/tree/lesson_12_gradle)  Gradle
+* [lesson-12](https://github.com/ValeriiJavalesson/JavaAdvanced_Lessons/tree/lesson_12_maven)  Maven
 * [lesson-13](https://github.com/ValeriiJavalesson/JavaAdvanced_Lessons/tree/lesson_13)  JPA
 * [lesson-14](https://github.com/ValeriiJavalesson/JavaAdvanced_Lessons/tree/lesson_14)  Hibernate
 * [lesson-15](https://github.com/ValeriiJavalesson/JavaAdvanced_Lessons/tree/lesson_15)  Hibernate mappings
