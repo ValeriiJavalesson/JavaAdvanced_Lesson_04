@@ -10,12 +10,13 @@ import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 
+import valerko.lgs.dao.UserRole;
 import valerko.lgs.domain.User;
 import valerko.lgs.dto.UserLogin;
 import valerko.lgs.service.UserService;
 import valerko.lgs.service.impl.UserServiceImpl;
 
-@WebServlet(name = "registration", urlPatterns = { "/registration" })
+@WebServlet("/registration")
 public class RegistrationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private UserService userService = UserServiceImpl.getUserService();
@@ -32,7 +33,7 @@ public class RegistrationServlet extends HttpServlet {
 		
 		if (user == null ) {
 			if (!firstName.isEmpty() && !lastName.isEmpty() && !email.isEmpty() && !password.isEmpty()) {
-				user = new User(firstName, lastName, email, password);
+				user = new User(firstName, lastName, email, password, UserRole.USER.toString());
 				userService.create(user);
 				
 				HttpSession session = request.getSession();

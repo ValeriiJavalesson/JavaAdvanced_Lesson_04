@@ -15,7 +15,7 @@ import valerko.lgs.domain.Product;
 import valerko.lgs.service.ProductService;
 import valerko.lgs.service.impl.ProductServiceImpl;
 
-@WebServlet(name = "products", urlPatterns = { "/products" })
+@WebServlet("/products")
 public class ProductsController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ProductService productService = ProductServiceImpl.getProductService();

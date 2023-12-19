@@ -6,12 +6,33 @@ import java.sql.SQLException;
 import java.util.Date;
 import java.util.Objects;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "bucket")
 public class Bucket {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private String id;
+	@ManyToOne
+	@JoinColumn(name = "user_id", referencedColumnName = "id")
 	private User user;
+	@ManyToOne
+	@JoinColumn(name = "product_id", referencedColumnName = "id")
 	private Product product;
+	@Column(name = "purchase_date")
 	private Date purchaseDate;
 
+	public Bucket() {}
+	
 	public Bucket(String id, User user, Product product, Date purchaseDate) {
 		this.id = id;
 		this.user = user;
@@ -23,9 +44,6 @@ public class Bucket {
 		this.user = user;
 		this.product = product;
 		this.purchaseDate = date;
-	}
-
-	public Bucket() {
 	}
 
 	public static Bucket map(ResultSet result) throws SQLException {

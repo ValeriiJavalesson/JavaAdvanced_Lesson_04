@@ -5,6 +5,7 @@ import java.util.List;
 import valerko.lgs.dao.BucketDao;
 import valerko.lgs.dao.impl.BucketDaoImpl;
 import valerko.lgs.domain.Bucket;
+import valerko.lgs.domain.User;
 import valerko.lgs.service.BucketService;
 
 public class BucketServiceImpl implements BucketService {
@@ -49,8 +50,8 @@ public class BucketServiceImpl implements BucketService {
 	}
 
 	@Override
-	public List<Bucket> readByUserId(Integer id) {
-		return bucketDao.readByUserId(id);
+	public List<Bucket> readByUser(User user) {
+		return bucketDao.readByUser(user);
 	}
 
 }

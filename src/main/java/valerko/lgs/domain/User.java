@@ -1,25 +1,36 @@
 package valerko.lgs.domain;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.util.Objects;
 
-import valerko.lgs.dao.UserRole;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="user")
 public class User {
-	private int id ;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id ;
+	@Column
 	private String firstName;
+	@Column
 	private String lastName;
+	@Column
 	private String email;
+	@Column
 	private String password;
-	private UserRole role;
-	
-	public User(String firstName, String lastName, String email, String password) {
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.email = email;
-		this.password = password;
-	}
-	public User(int id, String firstName, String lastName, String email, String password, UserRole role) {
+	@Column
+	private String role;
+    
+	public User() {
+	}	
+
+	public User(int id, String firstName, String lastName, String email, String password, String role) {
+		super();
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -27,30 +38,23 @@ public class User {
 		this.password = password;
 		this.role = role;
 	}
-	public User(int id, String firstName, String lastName, String email, String password) {
-		this.id = id;
+
+	public User(String firstName, String lastName, String email, String password, String role) {
+		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.password = password;
+		this.role = role;
 	}
-	
-    public static User map(ResultSet result) throws SQLException {
-        int id = result.getInt("id");
-        String firstName = result.getString("firstName");
-        String lastName = result.getString("lastName");
-        String email = result.getString("email");
-        String password = result.getString("password");
-        UserRole role = UserRole.valueOf(result.getString("role").toUpperCase());
-        return new User(id, firstName, lastName, email, password, role);
-    }
-    
-	public String getFirstName() {
-		return firstName;
-	}
+
 
 	public int getId() {
 		return id;
+	}
+	
+	public String getFirstName() {
+		return firstName;
 	}
 
 	public String getLastName() {
@@ -65,9 +69,53 @@ public class User {
 		return password;
 	}
 	
-	public UserRole getRole() {
+	public String getRole() {
 		return role;
 	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(email, firstName, id, lastName, password, role);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		User other = (User) obj;
+		return Objects.equals(email, other.email) && Objects.equals(firstName, other.firstName) && id == other.id
+				&& Objects.equals(lastName, other.lastName) && Objects.equals(password, other.password)
+				&& Objects.equals(role, other.role);
+	}
+
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email

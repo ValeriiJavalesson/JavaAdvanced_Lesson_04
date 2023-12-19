@@ -15,7 +15,7 @@ import valerko.lgs.dto.UserLogin;
 import valerko.lgs.service.UserService;
 import valerko.lgs.service.impl.UserServiceImpl;
 
-@WebServlet(name = "login", urlPatterns = { "/login" })
+@WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private UserService userService = UserServiceImpl.getUserService();

@@ -1,25 +1,31 @@
 package valerko.lgs;
 
-import valerko.lgs.dao.impl.BucketDaoImpl;
-import valerko.lgs.dao.impl.ProductDaoImpl;
-import valerko.lgs.dao.impl.UserDaoImpl;
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.PersistenceUnit;
+
+import valerko.lgs.domain.User;
+import valerko.lgs.service.UserService;
+import valerko.lgs.service.impl.UserServiceImpl;
 
 public class Main {
 
 	public static void main(String[] args) {
-		UserDaoImpl userDaoImpl = new UserDaoImpl();
-		ProductDaoImpl productDaoImpl = new ProductDaoImpl();
-		BucketDaoImpl bucketDaoImpl = new BucketDaoImpl();
+////		UserService userService = UserServiceImpl.getUserService();
+////		List<User> users = userService.readAll();
+////		
+////		System.out.println();
+////		System.out.println("Users:");
+////		users.forEach(System.out::println);
+////		System.out.println();
+
+	 EntityManagerFactory emf =
+             Persistence.createEntityManagerFactory("IShopPersistence");
+         EntityManager em = emf.createEntityManager();
 		
-		System.out.println();
-		System.out.println("Users:");
-		userDaoImpl.readAll().forEach(System.out::println);
-		System.out.println();
-		System.out.println("Products:");
-		productDaoImpl.readAll().forEach(System.out::println);
-		System.out.println();
-		System.out.println("Buckets:");
-		bucketDaoImpl.readAll().forEach(System.out::println);
 
 	}
 

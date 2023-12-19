@@ -16,26 +16,31 @@ import com.google.gson.Gson;
 
 import valerko.lgs.domain.Bucket;
 import valerko.lgs.domain.Product;
+import valerko.lgs.domain.User;
 import valerko.lgs.dto.BucketDto;
 import valerko.lgs.service.BucketService;
 import valerko.lgs.service.ProductService;
+import valerko.lgs.service.UserService;
 import valerko.lgs.service.impl.BucketServiceImpl;
 import valerko.lgs.service.impl.ProductServiceImpl;
+import valerko.lgs.service.impl.UserServiceImpl;
 
-@WebServlet(name = "buckets", urlPatterns = { "/buckets" })
+@WebServlet("/buckets")
 public class BucketsController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private BucketService bucketService = BucketServiceImpl.getBucketService();
 	private ProductService productService = ProductServiceImpl.getProductService();
+	private UserService userService = UserServiceImpl.getUserService();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
 		HttpSession session = request.getSession();
 		Integer userId = (Integer)session.getAttribute("user_id");
+		User user = userService.read(userId);
 		
-		List<Bucket> buckets = bucketService.readByUserId(userId);
+		List<Bucket> buckets = bucketService.readByUser(user);
 		Map<Integer, Product> idToProduct = productService.readAllMap();
 		List<BucketDto> listOfBucketDtos = map(buckets, idToProduct);
 		

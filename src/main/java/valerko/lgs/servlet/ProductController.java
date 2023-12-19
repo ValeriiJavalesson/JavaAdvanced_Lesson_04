@@ -1,20 +1,18 @@
 package valerko.lgs.servlet;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import valerko.lgs.dao.impl.ProductDaoImpl;
 import valerko.lgs.domain.Product;
 import valerko.lgs.service.ProductService;
-import valerko.lgs.service.UserService;
 import valerko.lgs.service.impl.ProductServiceImpl;
-import valerko.lgs.service.impl.UserServiceImpl;
 
-@WebServlet(name = "product", urlPatterns = { "/product" })
+@WebServlet("/product")
 public class ProductController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	ProductService productService = ProductServiceImpl.getProductService();

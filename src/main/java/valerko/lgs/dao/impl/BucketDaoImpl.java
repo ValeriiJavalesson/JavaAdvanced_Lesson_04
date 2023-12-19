@@ -1,46 +1,29 @@
 package valerko.lgs.dao.impl;
 
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 import valerko.lgs.dao.BucketDao;
 import valerko.lgs.domain.Bucket;
-import valerko.lgs.utils.ConnectionUtil;
+import valerko.lgs.domain.User;
+import valerko.lgs.shared.FactoryManager;
 
 public class BucketDaoImpl implements BucketDao {
-	private static final String READ_ALL = "select * from bucket";
-	private static final String CREATE = "insert into bucket(`user_id`, `product_id`, `purchase_date`) values (?,?,?)";
-	private static final String READ_BY_ID = "select * from bucket where id=?";
-	private static final String READ_BY_USER_ID = "select * from bucket where user_id=?";
-	private static final String UPDATE_BY_ID = "update bucket set user_id=?, product_id=?, purchase_date = ? where id = ?";
-	private static final String DELETE_BY_ID = "delete from bucket where id=?";
-
-	private Connection connection;
-	private PreparedStatement preparedStatement;
-
-	private static Logger LOGGER = Logger.getLogger(BucketDaoImpl.class);
-
-	public BucketDaoImpl() {
-		this.connection = ConnectionUtil.getInstance().getConnection();
-	}
+	
+	private EntityManager em = FactoryManager.getEntityManager();
 
 	@Override
 	public Bucket create(Bucket bucket) {
 		try {
-			preparedStatement = connection.prepareStatement(CREATE);
-			preparedStatement.setString(1, bucket.getUser().toString());
-			preparedStatement.setString(2, bucket.getProduct().toString());
-			preparedStatement.setDate(3, new Date(bucket.getPurchaseDate().getTime()));
-			preparedStatement.executeUpdate();
-		} catch (SQLException e) {
-			LOGGER.error(e);
+			em.getTransaction().begin();
+			em.persist(bucket);
+			em.getTransaction().commit();
+//			em.close();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		return bucket;
 	}
@@ -49,68 +32,51 @@ public class BucketDaoImpl implements BucketDao {
 	public Bucket read(Integer id) {
 		Bucket bucket = null;
 		try {
-			preparedStatement = connection.prepareStatement(READ_BY_ID);
-			preparedStatement.setInt(1, id);
-			ResultSet result = preparedStatement.executeQuery();
-			result.next();
-			bucket = Bucket.map(result);
-		} catch (SQLException e) {
-			LOGGER.error(e);
+			bucket = em.find(Bucket.class, id.toString());
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		return bucket;
 	}
-	public List<Bucket> readByUserId(Integer id) {
+
+	public List<Bucket> readByUser(User user) {
 		List<Bucket> listOfBuckets = new ArrayList<>();
 		try {
-			preparedStatement = connection.prepareStatement(READ_BY_USER_ID);
-			preparedStatement.setInt(1, id);
-			ResultSet result = preparedStatement.executeQuery();
-			while (result.next()) {
-				listOfBuckets.add(Bucket.map(result));
-			}
-		} catch (SQLException e) {
-			LOGGER.error(e);
+			listOfBuckets = readAll().stream()
+					.filter(b->b.getUser().equals(user))
+					.toList();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		return listOfBuckets;
 	}
 
 	@Override
 	public Bucket update(Bucket bucket) {
-		try {
-			preparedStatement = connection.prepareStatement(UPDATE_BY_ID);
-			preparedStatement.setString(1, bucket.getUser().toString());
-			preparedStatement.setString(2, bucket.getProduct().toString());
-			preparedStatement.setDate(3, new Date(bucket.getPurchaseDate().getTime()));
-			preparedStatement.executeUpdate();
-		} catch (SQLException e) {
-			LOGGER.error(e);
-		}
-		return bucket;
+		throw new IllegalStateException("there is no update for bucket");
 	}
 
 	@Override
 	public void delete(Integer id) {
 		try {
-			preparedStatement = connection.prepareStatement(DELETE_BY_ID);
-			preparedStatement.setInt(1, id);
-			preparedStatement.executeUpdate();
-		} catch (SQLException e) {
-			LOGGER.error(e);
+			Bucket bucket = read(id);
+			em.getTransaction().begin();
+			em.remove(bucket);
+			em.getTransaction().commit();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Bucket> readAll() {
-		List<Bucket> listOfBuckets = new ArrayList<>();
+		Query query = null;
 		try {
-			preparedStatement = connection.prepareStatement(READ_ALL);
-			ResultSet result = preparedStatement.executeQuery();
-			while (result.next()) {
-				listOfBuckets.add(Bucket.map(result));
-			}
-		} catch (SQLException e) {
-			LOGGER.error(e);
+			query = em.createQuery("SELECT e FROM Bucket e");
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		return listOfBuckets;
+		return query.getResultList();
 	}
 }

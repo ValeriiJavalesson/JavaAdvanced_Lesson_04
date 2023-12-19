@@ -10,7 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 
-@WebServlet(name = "user-role", urlPatterns = { "/user-role" })
+@WebServlet("/user-role")
 public class UserRoleServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

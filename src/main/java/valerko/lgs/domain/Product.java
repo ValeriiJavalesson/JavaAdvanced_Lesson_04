@@ -4,11 +4,28 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Objects;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "product")
 public class Product {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	@Column
 	private String title;
+	@Column
 	private String description;
+	@Column
 	private Double price;
+
+	public Product() {
+	}
 
 	public Product(Integer id, String title, String description, Double price) {
 		this.id = id;

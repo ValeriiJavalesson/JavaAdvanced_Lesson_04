@@ -4,8 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import org.apache.log4j.xml.DOMConfigurator;
-
 public class ConnectionUtil {
 	private static final String USER_NAME = "Valerii";
     private static final String USER_PASSWORD = null;
@@ -16,7 +14,7 @@ public class ConnectionUtil {
 
     private ConnectionUtil() {
     	
-    	DOMConfigurator.configure("loggerConfig.xml");
+//    	DOMConfigurator.configure("loggerConfig.xml");
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             this.connection = DriverManager.getConnection(URL, USER_NAME, USER_PASSWORD);
