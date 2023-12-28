@@ -23,7 +23,6 @@ public class Application {
 		
 		post1.setComments(new HashSet<>(Arrays.asList(comment1)));
 		post2.setComments(new HashSet<>(Arrays.asList(comment2, comment3)));
-		System.out.println(post2.getComments());
 
 		// Creating new transaction
 		Transaction transaction = session.beginTransaction();
