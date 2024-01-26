@@ -7,10 +7,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
-import static valerko.lgs.domain.Accreditation.LEVEL_1;
-import static valerko.lgs.domain.Accreditation.LEVEL_2;
-import static valerko.lgs.domain.Accreditation.LEVEL_3;
-import static valerko.lgs.domain.Accreditation.LEVEL_4;
+import static valerko.lgs.domain.Accreditation.*;
 import valerko.lgs.domain.University;
 import valerko.lgs.service.UniversityService;
 
