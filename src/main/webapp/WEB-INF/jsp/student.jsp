@@ -3,11 +3,10 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html lang="en">
-
 <head>
-<title>JavaAdvanced_Lessons - lesson_19 - Spring Multipart</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JavaAdvanced_Lessons - lesson_19 - Spring Multipart</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -17,7 +16,6 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 </head>
-
 <body>
 	<nav class="navbar navbar-default sticky-top shadow bg-light mb-3">
 		<div class="container-fluid">
@@ -38,17 +36,11 @@
 					$("#student_list option[value='${current_student.id}']")
 							.prop('selected', true);
 				</script>
-
 			</div>
-
-
 		</div>
 	</nav>
-
 	<div class="container mt-2 ">
 		<div class="d-flex flex-column align-items-center">
-
-
 			<div class="card shadow border border-top-0 bg-light"
 				style="width: 30rem;">
 				<div class="d-flex align-items-center" style="height: 25rem;">
@@ -56,7 +48,6 @@
 						class="card-img-top" alt="Student`s Photo"
 						style="margin: auto; width: 100%;">
 				</div>
-
 				<div class="card-body mt-2">
 					<ul class="list-group list-group-flush">
 						<li class="list-group-item bg-light"><h5 class="text-primary">ID:</h5>
@@ -70,10 +61,8 @@
 					</ul>
 				</div>
 			</div>
-
 		</div>
 	</div>
 	<script type="text/javascript" src="/js/student.js"></script>
 </body>
-
 </html>
