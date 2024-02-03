@@ -5,7 +5,6 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <title>JavaAdvanced_Lessons - lesson_19 - Spring Multipart</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
@@ -14,7 +13,6 @@
 	rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
-
 <body>
 	<nav class="navbar navbar-default sticky-top shadow bg-light mb-3">
 		<div class="container-fluid">
@@ -44,5 +42,4 @@
 		</form>
 	</div>
 </body>
-
 </html>
